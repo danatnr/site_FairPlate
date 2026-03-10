@@ -13,7 +13,7 @@ st.caption("Un site web interactif, codé 100% en Python.")
 
 # ---- Barre latérale ----
 with st.sidebar:
-    st.image("assets/logo.png", caption="Mon logo", use_container_width=True)
+    #st.image("assets/logo.png", caption="Mon logo", use_container_width=True)
     st.markdown("### Navigation")
     st.link_button("📊 Tableau de bord", "pages/1_📊_Tableau_de_bord.py")
     st.link_button("📝 Formulaire", "pages/2_📝_Formulaire.py")
