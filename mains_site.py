@@ -90,7 +90,7 @@ st.caption("Mangez mieux aujourd'hui pour préserver la planète de demain : le 
 with st.sidebar:
     st.markdown("### Navigation")
     
-    col1, col2, col3 = st.columns(2)
+    col2, col3 = st.columns(2)
     
     with col2:
         if st.button("🔍 Recherche", use_container_width=True):
