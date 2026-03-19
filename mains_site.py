@@ -93,23 +93,26 @@ with st.sidebar:
     col2, col3 = st.columns(2)
     
     with col2:
-        if st.button("🔍 Recherche", use_container_width=True):
+        if st.button("🔍 Recherche", use_container_width=True, key="btn_search"):
             st.switch_page("page1.py")
     with col3:
-        st.link_button("📧 Contact", "#contact", use_container_width=True)
+        if st.button("📧 Contact", use_container_width=True, key="btn_contact"):
+            # Scroll jusqu'à la section contact
+            st.markdown("""
+            <script>
+                setTimeout(() => {
+                    const element = document.getElementById('contact');
+                    if (element) element.scrollIntoView({behavior: 'smooth'});
+                }, 100);
+            </script>
+            """, unsafe_allow_html=True)
     
     st.divider()
     st.markdown("**Paramètres**")
     dark_mode = st.toggle("Mode sombre (visuel)")
 
-# ---- Contenu principal ----
-st.subheader("Bienvenue 👋")
-st.write(
-    " "
-)
-
 # ---- Boutons d'accès direct aux pages ----
-if st.button("Aller à la Recherche d'aliments", use_container_width=True):
+if st.button("Aller à la Recherche d'aliments", use_container_width=True, key="btn_main_search"):
     st.switch_page("pages/page1.py")
 
 # ---- Exemple d'UI ----
@@ -124,6 +127,7 @@ with col3:
 # ---- Formulaire de contact ----
 st.divider()
 st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
+'''
 # Container avec fond vert foncé
 st.markdown("""
 <style>
@@ -140,7 +144,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-
+'''
 st.markdown('<div class="contact-form">', unsafe_allow_html=True)
 
 st.markdown("### 📧 Contactez-nous", unsafe_allow_html=True)
