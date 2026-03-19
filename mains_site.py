@@ -94,7 +94,7 @@ with st.sidebar:
     
     with col2:
         if st.button("🔍 Recherche", use_container_width=True, key="btn_search"):
-            st.switch_page("page1.py")
+            st.switch_page("pages/page1.py")
     with col3:
         if st.button("📧 Contact", use_container_width=True, key="btn_contact"):
             st.session_state.scroll_to_contact = True
@@ -105,7 +105,7 @@ with st.sidebar:
 
 # ---- Boutons d'accès direct aux pages ----
 if st.button("Aller à la Recherche d'aliments", use_container_width=True, key="btn_main_search"):
-    st.switch_page("c:\Users\danat\Desktop\unif\StarTech-FairPlate\site_FairPlate\page1.py")
+    st.switch_page("pages/page1.py")
 
 # ---- Exemple d'UI ----
 col1, col2, col3 = st.columns(3)
