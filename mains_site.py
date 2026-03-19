@@ -5,7 +5,17 @@ st.set_page_config(
     page_title="FairPlate",
     #page_icon="",
     layout="wide",
+    initial_sidebar_state="expanded"
 )
+
+# ---- Masquer le menu supérieur ----
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        header {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
 # ---- Style personnalisé ----
 st.markdown("""
 <style>
@@ -57,14 +67,15 @@ h2, h3 {
 [data-testid="stSidebar"] p {
     color: #e8f5e9 !important;
 }
-            
+
+/* Boutons de la sidebar - CORRIGÉ */
 [data-testid="stSidebar"] [data-testid="stButton"] button {
     background-color: #4caf50 !important;
-    color: #e8f5e9 !important;
+    color: #1b5e20 !important;
     font-weight: 600 !important;
 }
 
-/* Masquer le menu automatiqu */
+/* Masquer le menu automatique */
 [data-testid="collapsedControl"] {
     display: none !important;
 }
@@ -76,17 +87,19 @@ st.title("FairPlate")
 st.caption("Mangez mieux aujourd'hui pour préserver la planète de demain : le guide de la transition alimentaire")
 
 # ---- Barre latérale ----
-# ---- Barre latérale ----
 with st.sidebar:
     st.markdown("### Navigation")
     
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.link_button("🏠 Home", "mains_site.py", use_container_width=True)
+        if st.button("🏠 Home", use_container_width=True):
+            st.switch_page("pages/mains_site.py")
     with col2:
-        st.link_button("🔍 Recherche", "pages/page1.py", use_container_width=True)
+        if st.button("🔍 Recherche", use_container_width=True):
+            st.switch_page("pages/page1.py")
     with col3:
-        st.link_button("📧 Contact", "mains_site.py#contact", use_container_width=True)
+        if st.button("📧 Contact", use_container_width=True):
+            st.switch_page("pages/mains_site.py")
     
     st.divider()
     st.markdown("**Paramètres**")
@@ -99,10 +112,10 @@ st.write(
 )
 
 # ---- Boutons d'accès direct aux pages ----
-if st.button("📊 Aller à la Recherche d'aliments", use_container_width=True):
+if st.button("Aller à la Recherche d'aliments", use_container_width=True):
     st.switch_page("pages/page1.py")
 
-# ---- Exemple d’UI ----
+# ---- Exemple d'UI ----
 col1, col2, col3 = st.columns(3)
 with col1:
     st.metric("Utilisateurs", 124)
