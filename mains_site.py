@@ -57,6 +57,17 @@ h2, h3 {
 [data-testid="stSidebar"] p {
     color: #e8f5e9 !important;
 }
+            
+[data-testid="stSidebar"] [data-testid="stButton"] button {
+    background-color: #4caf50 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Masquer le menu automatiqu */
+[data-testid="collapsedControl"] {
+    display: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -65,10 +76,18 @@ st.title("FairPlate")
 st.caption("Mangez mieux aujourd'hui pour préserver la planète de demain : le guide de la transition alimentaire")
 
 # ---- Barre latérale ----
+# ---- Barre latérale ----
 with st.sidebar:
-    #st.image("assets/logo.png", caption="Mon logo", use_container_width=True)
     st.markdown("### Navigation")
-    st.link_button("Recherche aliment", "pages/page1.py")
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.link_button("🏠 Home", "mains_site.py", use_container_width=True)
+    with col2:
+        st.link_button("🔍 Recherche", "pages/page1.py", use_container_width=True)
+    with col3:
+        st.link_button("📧 Contact", "mains_site.py#contact", use_container_width=True)
+    
     st.divider()
     st.markdown("**Paramètres**")
     dark_mode = st.toggle("Mode sombre (visuel)")
@@ -94,7 +113,7 @@ with col3:
 
 # ---- Formulaire de contact ----
 st.divider()
-
+st.markdown('<a name="contact"></a>', unsafe_allow_html=True)
 # Container avec fond vert foncé
 st.markdown("""
 <style>
