@@ -60,7 +60,7 @@ h2, h3 {
             
 [data-testid="stSidebar"] [data-testid="stButton"] button {
     background-color: #4caf50 !important;
-    color: #ffffff !important;
+    color: #e8f5e9 !important;
     font-weight: 600 !important;
 }
 
