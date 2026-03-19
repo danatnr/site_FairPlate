@@ -96,7 +96,7 @@ with st.sidebar:
         if st.button("🔍 Recherche", use_container_width=True):
             st.switch_page("page1.py")
     with col3:
-        if st.link_button("📧 Contact", "#contact", use_container_width=True)
+        st.link_button("📧 Contact", "#contact", use_container_width=True)
     
     st.divider()
     st.markdown("**Paramètres**")
