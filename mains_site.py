@@ -43,7 +43,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-
 /* Style des sous-titres */
 h2, h3 {
     font-family: 'Poppins', sans-serif;
@@ -68,8 +67,8 @@ h2, h3 {
     color: #e8f5e9 !important;
 }
 
-/* Boutons de la sidebar - CORRIGÉ */
-[data-testid="stSidebar"] [data-testid="stButton"] [data-testid="stLinkButton"] button {
+/* Boutons de la sidebar - TOUS LES BOUTONS */
+[data-testid="stSidebar"] button {
     background-color: #4caf50 !important;
     color: #1b5e20 !important;
     font-weight: 600 !important;
@@ -81,6 +80,7 @@ h2, h3 {
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 # ---- En-tête / Hero ----
 st.title("FairPlate")
@@ -96,12 +96,7 @@ with st.sidebar:
         if st.button("🔍 Recherche", use_container_width=True, key="btn_search"):
             st.switch_page("pages/page1.py")
     with col3:
-        if st.button("📧 Contact", use_container_width=True, key="btn_contact"):
-            st.markdown("""
-            <script>
-                window.open('https://fair-plate.streamlit.app/~/#/contactez-nous', '_self');
-            </script>
-            """, unsafe_allow_html=True)
+        st.link_button("📧 Contact", "https://fair-plate.streamlit.app/~/#/contactez-nous", use_container_width=True)
 
     st.divider()
     st.markdown("**Paramètres**")
