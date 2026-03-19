@@ -69,7 +69,7 @@ h2, h3 {
 }
 
 /* Boutons de la sidebar - CORRIGÉ */
-[data-testid="stSidebar"] [data-testid="stButton"] button {
+[data-testid="stSidebar"] [data-testid="stButton"] [data-testid="stLinkButton"] button {
     background-color: #4caf50 !important;
     color: #1b5e20 !important;
     font-weight: 600 !important;
@@ -97,7 +97,11 @@ with st.sidebar:
             st.switch_page("pages/page1.py")
     with col3:
         if st.button("📧 Contact", use_container_width=True, key="btn_contact"):
-            st.session_state.scroll_to_contact = True
+            st.markdown("""
+            <script>
+                window.open('https://fair-plate.streamlit.app/~/#/contactez-nous', '_self');
+            </script>
+            """, unsafe_allow_html=True)
 
     st.divider()
     st.markdown("**Paramètres**")
