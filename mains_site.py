@@ -6,22 +6,53 @@ st.set_page_config(
     #page_icon="",
     layout="wide",
 )
+# ---- Style personnalisé ----
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Fond de couleur vert dégradé */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    background-attachment: fixed;
+}
+
+/* Police personnalisée */
+html, body, [class*="css"] {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Style du titre */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+/* Style des sous-titres */
+h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #2e7d32;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ---- En-tête / Hero ----
 st.title("FairPlate")
-st.subheader("Mangez mieux aujourd'hui pour préserver la planète de demain : le guide de la transition alimentaire")
+st.caption("Mangez mieux aujourd'hui pour préserver la planète de demain : le guide de la transition alimentaire")
 
 # ---- Barre latérale ----
 with st.sidebar:
     #st.image("assets/logo.png", caption="Mon logo", use_container_width=True)
     st.markdown("### Navigation")
-    st.link_button("📊 Tableau de bord", "pages/1_📊_Tableau_de_bord.py")
+    st.link_button("Recherche aliment", "pages/page1.py")
     st.divider()
     st.markdown("**Paramètres**")
     dark_mode = st.toggle("Mode sombre (visuel)")
 
 # ---- Contenu principal ----
-st.subsubheader("Bienvenue 👋")
+st.subheader("Bienvenue 👋")
 st.write(
     "Ceci est la page d’accueil de ton site. Utilise le menu **pages** (en haut à gauche) "
     "ou les boutons dans la barre latérale pour naviguer."
