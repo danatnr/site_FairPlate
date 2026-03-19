@@ -97,23 +97,15 @@ with st.sidebar:
             st.switch_page("page1.py")
     with col3:
         if st.button("📧 Contact", use_container_width=True, key="btn_contact"):
-            # Scroll jusqu'à la section contact
-            st.markdown("""
-            <script>
-                setTimeout(() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({behavior: 'smooth'});
-                }, 100);
-            </script>
-            """, unsafe_allow_html=True)
-    
+            st.session_state.scroll_to_contact = True
+
     st.divider()
     st.markdown("**Paramètres**")
     dark_mode = st.toggle("Mode sombre (visuel)")
 
 # ---- Boutons d'accès direct aux pages ----
 if st.button("Aller à la Recherche d'aliments", use_container_width=True, key="btn_main_search"):
-    st.switch_page("pages/page1.py")
+    st.switch_page("c:\Users\danat\Desktop\unif\StarTech-FairPlate\site_FairPlate\page1.py")
 
 # ---- Exemple d'UI ----
 col1, col2, col3 = st.columns(3)
@@ -126,28 +118,19 @@ with col3:
 
 # ---- Formulaire de contact ----
 st.divider()
-st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
-'''
-# Container avec fond vert foncé
-st.markdown("""
-<style>
-.contact-form {
-    background-color: #2e7d32;
-    padding: 30px;
-    border-radius: 15px;
-    margin: 20px 0;
-}
+st.markdown('<a name="contact"></a>', unsafe_allow_html=True)
 
-.contact-form h3 {
-    color: #ffffff !important;
-    margin-top: 0;
-}
-</style>
-""", unsafe_allow_html=True)
-'''
-st.markdown('<div class="contact-form">', unsafe_allow_html=True)
+if "scroll_to_contact" in st.session_state and st.session_state.scroll_to_contact:
+    st.markdown("""
+    <script>
+        setTimeout(() => {
+            window.location.hash = 'contact';
+        }, 100);
+    </script>
+    """, unsafe_allow_html=True)
+    st.session_state.scroll_to_contact = False
 
-st.markdown("### 📧 Contactez-nous", unsafe_allow_html=True)
+st.markdown("### 📧 Contactez-nous")
 
 with st.form("contact_form"):
     col1, col2 = st.columns(2)
@@ -170,8 +153,6 @@ with st.form("contact_form"):
             st.balloons()
         else:
             st.error("⚠️ Veuillez remplir tous les champs!")
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # ---- Footer ----
 st.divider()
