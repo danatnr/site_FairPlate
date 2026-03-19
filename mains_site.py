@@ -90,16 +90,13 @@ st.caption("Mangez mieux aujourd'hui pour préserver la planète de demain : le 
 with st.sidebar:
     st.markdown("### Navigation")
     
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("🏠 Home", use_container_width=True):
-            st.switch_page("pages/mains_site.py")
+    col1, col2, col3 = st.columns(2)
+    
     with col2:
         if st.button("🔍 Recherche", use_container_width=True):
-            st.switch_page("pages/page1.py")
+            st.switch_page("page1.py")
     with col3:
-        if st.button("📧 Contact", use_container_width=True):
-            st.switch_page("pages/mains_site.py")
+        if st.link_button("📧 Contact", "#contact", use_container_width=True)
     
     st.divider()
     st.markdown("**Paramètres**")
@@ -126,7 +123,7 @@ with col3:
 
 # ---- Formulaire de contact ----
 st.divider()
-st.markdown('<a name="contact"></a>', unsafe_allow_html=True)
+st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
 # Container avec fond vert foncé
 st.markdown("""
 <style>
